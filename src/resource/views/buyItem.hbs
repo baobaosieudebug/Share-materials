@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      position: fixed;
+      background-color: lightcoral;
+      height: 100%;
+      
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      height: 40px;
+      margin-top: 30px;
+      {{!-- padding: 15px; --}}
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+
+    {{!-- vertical menu --}}
+    .vertical-menu {
+      width: 282px;
+      text-align: center  ;
+    
+    }
+
+    .vertical-menu a {
+      background-color:lightgreen;
+      color: black;
+      display: block;
+      padding: 12px;
+      text-decoration: none;
+    }
+
+    .vertical-menu a:hover {
+      background-color: #90cf9281;
+    }
+
+    .vertical-menu a.active {
+      background-color: #3bc540;
+      color: white;
+    }
+    {{!-- end vertical menu --}}
+
+    {{!-- card item --}}
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        background-color:whitesmoke ;
+        height: 100vh;
+        font-family: Roboto;
+        display: grid;
+        place-items: center center;
+        color: #fff;
+    }
+
+    .cards{
+        
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+        padding: 20px;
+        grid-gap: 40px;
+        margin-top: 57.5px;
+    }
+    .card{
+        background-color:#8acac5;
+        margin-top: 25px;  
+         margin-left: 30px;  
+        height: 650px;
+        width: 267.5px;
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    }
+    .container{
+        position: relative;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+    img{
+        width: 23.5%;
+        height: 350px;
+        display: block;
+        border-radius: 20px 20px 0 0;
+        margin-left:-15px;
+    }
+
+    .container::after{
+        {{!-- content: "";
+        height: 100%;
+        width: 23%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 20px 20px 0 0;
+        opacity: 0.6; --}}
+    }
+    .card1>.container:after{
+        background-image: linear-gradient(35deg, #c4a377  , #6f86d6);
+    }
+
+    .noi-dung{
+        padding: 20px 10px;
+    }
+
+    .noi-dung h3{
+      font-size: 24px;
+      margin: 10px 0 15px 0; 
+    }
+
+    .noi-dung p{
+        color: #a0a0a0;
+        font-size: 16px;
+        line-height: 30px;
+    }
+    .noi-dung .btn1{
+      margin-top: 30%;
+    }
+
+
+    button {
+        display: block;
+        margin-top: 20px;
+        float: right;
+      border: none;
+      outline: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+        color: #fff;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 20px 0 #0000003b;
+    }
+    button:hover{
+      cursor: pointer;
+    }
+    .btn1{
+        background-image: linear-gradient(135deg, #48c6ef  , #6f86d6);
+    }
+    .btn2{
+        background-image: linear-gradient(135deg, #2bdce3, #42ffdb);
+    }
+    .btn3{
+        background-image: linear-gradient(135deg, #ff758c , #ff7eb3);
+    }
+    {{!-- end card item --}}
+    #pagnation{
+      width:1217.5px;
+      height:70px;
+      margin-left: 90px;
+      background-color:white;
+    }
+    #previous{
+      background-color:violet;
+      margin-left:550px;
+    }
+    #next{
+      background-color:violet;
+    }
+    {{!-- footer --}}
+    .f_400{
+    
+      border-color: #5e2ced;
+      color:white;
+    }
+    .text-right{
+       border-color: #5e2ced;
+      color:white;
+      text-align:center;
+      margin-left:300px;
+    }
+    .col-sm-9{
+      width: 1030px;
+      margin-left:355px;
+
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4 style="color:rgb(24, 212, .">DaVid's Blog</h4>
+      
+      <div class="input-group" style="margin-top:50px" >
+        <input type="text" class="form-control" placeholder="Search Blog.." style="margin-bottom:35px;">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" style="margin-top:-35px">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+      <div class="vertical-menu">
+        <a href="/Home" class="active">Home</a>
+        <a href="#">Khoa Học Máy Tính</a>
+        <a href="#">Mạng Máy Tính & TTDL</a>
+        <a href="#">Hệ Thống Thông Tin</a>
+        <a href="#">Kỹ Thuật Phần Mềm</a>
+        <a href="#">Công Nghệ Thông Tin</a>
+        <a href="#">Khoa Kinh Tế</a>
+        <a href="#">Khoa Nông Nghiệp</a>
+        <a href="#">Khoa Sinh Học Ứng Dụng</a>
+        <a href="#">Khoa Công Nghệ</a>
+        <a href="#">Khoa Chính Trị</a>
+      </div>    
+    </div>
+
+    <div class="col-sm-9">
+      <div class="mt-4">
+            <div class="row"> 
+              {{#each Product}} 
+              <div class="col-sm-6 col-sm-4">
+              <div class="card card1">
+                  <div class="container" >
+                      <img src="{{this.image}}" alt="Ảnh 1">
+                  </div>
+                  <div class="noi-dung">
+                    <h3> <a href="buyItem/{{this.slug}}">{{this.name}}</a></h3> 
+                      <p>{{this.description}}</p>
+                    <a href="buyItem/{{this.slug}}"><button class="btn1">Tìm Hiểu Thêm</button></a> 
+                  </div>
+              </div>
+              </div>
+              {{/each}}  
+        </div>
+        </div>
+
+
+    </div>
+    {{!-- menu pagnation --}}
+       <div class="pagnation" id="pagnation">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item"><a id="previous" class="page-link" href="/buyItem?page=10">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="/buyItem">1</a></li>
+              <li class="page-item"><a class="page-link" href="/buyItem?page=1">2</a></li>
+              <li class="page-item"><a class="page-link" href="/buyItem?page=2">3</a></li>
+              <li class="page-item"><a class="page-link" href="/buyItem?page=3">4</a></li>
+              <li class="page-item"><a class="page-link" href="/buyItem?page=4">5</a></li>
+              <li class="page-item"><a class="page-link" href="/buyItem?page=5">6</a></li>
+              <li class="page-item"><a class="page-link" href="/buyItem?page=6">7</a></li>
+              <li class="page-item"><a class="page-link" href="/buyItem?page=7">8</a></li>
+              <li class="page-item"><a class="page-link" href="/buyItem?page=8">9</a></li>
+              <li class="page-item"><a class="page-link" href="/buyItem?page=9">10</a></li>
+              <li class="page-item"><a  id="next" class="page-link" href="/buyItem">Next</a></li>
+            </ul>
+          </nav>
+       </div>
+ {{!-- end --}}
+
+ {{!-- footer --}}
+  <footer class="container-fluid text-center"> 
+  <div class="col-lg-6 col-sm-5 text-right">
+      <p class="mb-0 f_400">© Data Comunication & Computer NetWork</p>
+      <p>Made By <i class="icon_heart"></i> in <a href="https://github.com/baobaosieudebug">David Nguyen</a></p>
+    </div>
+  </footer>
+
+    </div>
+  </div>
+</body>
+</html>

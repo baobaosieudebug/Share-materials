@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../img/bg-4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+    width: 42%;
+  padding: 16px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+ 
+  margin: 10px 365px;
+}
+</style>
+</head>
+<body>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<div class="mt-4">
+    <form method="POST" action="/buyItem/{{News._id}}?_method=DELETE">
+    <div class="container">
+    <h1>Create Item</h1>
+    <p>Please fill in this form to create an item.</p>
+    <hr>
+
+    <label for="email"><b>Tên sản phẩm</b></label>
+    <label for="psw"><b>ID ẢNH </b></label>
+    <input type="text" placeholder="Enter Price" value="{{News.image}}" name="image" id="price" required>
+
+    <label for="psw-repeat"><b>Mô tả chi tiết</b></label>
+   <input type="text" placeholder="Enter Detail" value="{{News.description}}" name="descripttion" id="descripttion" required><br><br>
+
+    <hr>
+    <button type="submit" class="registerbtn">Xóa sản phẩm</button>
+  </div>
+      
+        </div>
+
+    </form>
+   
+    {{!-- </div>
+</div>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item ">
+       <a class="page-link" href="#">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="http://localhost:3000/buyItem">1</a></li>
+    <li class="page-item"><a class="page-link" href="http://localhost:3000/buyItem?page=2">2</a></li>
+    <li class="page-item"><a class="page-link" href="http://localhost:3000/buyItem?page=3">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+
+{{!-- confitm delete --}}
+<div class="modal" tabindex="-1" id="delete-news-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa bài viết</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có thực sự muốn xóa ?</p>`
+      </div>
+      <div class="modal-footer">
+         <button type="button"  class="btn btn-danger" id="btn-delete-new"> Xóa bỏ</button>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>  
+
+
+
+
+
+
+<form method="POST" name="delete" action="/buyItem/{{News._id}}?_method=DELETE">
+ 
+</form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    .navbar-brand{
+     background-image: url("https://ksvl.ctu.edu.vn/image/company_logo?img_id=22715&t=1604506980798");
+    }
+    #navbarNavAltMarkup{
+        width:950px;     
+         margin-left:350px ;   
+         margin-top: -200px;
+    }
+    .nav-link{
+        width:180px;
+        margin-left:85px;
+        margin-top:-64.5px;
+        margin-right: -40px;
+        color:lightblue;  
+    }
+      
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    *{
+    margin:0;
+    padding:0;
+  }
+
+  .container{  padding-top: 20px;
+    padding-bottom: 20px;}
+  body{
+    background-color: #dfdfdf;
+  }
+
+  .content h2{ font-size:19px;}
+
+  .navbar-inverse{
+    background-color: #111845;
+      background-size: cover;
+      border-radius: 10px;
+      height:100%;
+  }
+  .text-center{
+    background-color: #111845;
+      background-size: cover;
+  }
+  .col-form-label{
+    border-radius: 10px;
+    border-color: lightgreen;
+  }
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse" >
+    <nav>
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="https://www.ctu.edu.vn/" style="margin-right:1000px;width:170px;height:170px;"></a>
+        </div>
+    </nav>
+ 
+    <nav class="navbar navbar-expand-lg navbar-black bg-black">
+        <div class="container-fluid">
+            {{!-- <a class="navbar-brand" href="#">Navbar</a> --}}
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+               <ul class="navbar-nav mr-auto">
+                 <li>
+                     <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                 </li>
+                  <li>
+                      <a class="nav-link" href="/createItem">Đăng sản phẩm</a>
+                 </li>
+                  <li>
+                     <a class="nav-link" href="/buyItem">Mua sản phẩm</a>
+                 </li>
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Other
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="myprofile">Thông Tin Cá Nhân</a>
+                      <a class="dropdown-item" href="showDetail">Sản Phẩm Cá Nhân</a>
+                       <a class="dropdown-item" href="https://www.facebook.com/profile.php?id=100006751751848">Nhắn Tin Cho Hỗ Trợ Viên</a>
+                      <div class="dropdown-divider"></div>
+                      {{!-- <a class="dropdown-item" href="#">Something else here</a> --}}
+                       <a class="dropdown-item" href="logout"><span class="glyphicon glyphicon-log-in">             LogOut</a>
+                      
+                    </div>
+               </li>
+           
+               </ul>
+               
+                </div>
+                  <form class="form-inline my-2 my-lg-0" style="margin-left:85px;margin-right:50px;">
+                    <input class="col-10 col-form-label" type="search" placeholder="Nhập vào tên sách bạn muốn tìm kiếm ?" aria-label="Search" style="text-align:center">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+</nav>
+
+
+    <div class="mt4">
+      <h2 style="margin-top:30px;">Sản Phẩm Của Tôi</h2>
+      <table class="table mt-4">
+        <thead>
+          <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Tên Sản Phẩm</th>
+            <th scope="col">Giá Sản Phẩm</th>
+            <th scope="col">Mô Tả Chi Tiết</th>
+            <th scope="col">Chỉnh Sửa Chi Tiết</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each Product}}
+          <tr>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.name}}</td>
+            <td>{{this.price}}</td>
+            <td>{{this.description}}</td>
+            <td>
+              <button type="button" class="btn btn-outline-info"> <a href="{{this._id}}/edit" class="btn btn-link">Sửa</a></button>
+              <button type="button" class="btn btn-outline-info"> <a href="#" class="btn btn-link" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-product-modal">Xóa</a></button>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+
+    <form name="delete" method="POST"></form>
+    {{!-- confitm delete --}}
+    <div class="modal" tabindex="-1" id="delete-product-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Xóa bài viết</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+          </div>
+          <div class="modal-body">
+            <p>Bạn có thực sự muốn xóa ?</p>`
+          </div>
+          <div class="modal-footer">
+            <button type="button"  class="btn btn-danger" id="btn-delete-new"> Xóa bỏ</button>
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Hủy</button>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+        </div>
+      </div>
+    </div>
+
+
+
+    
+    <script >
+    var productId;
+    var deleteForm=document.forms['delete'];
+    $('#delete-product-modal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+     productId = button.data('id') // Extract info from data-* attributes
+  
+    })
+    var btnDeleteNews = document.getElementById('btn-delete-new');
+
+    btnDeleteNews.onclick = function(){
+      deleteForm.action = '/home/' + productId +'?_method=DELETE';
+          deleteForm.submit();
+    }
+    </script>
+
+</body>
+</html>
+ 
+
+
+
+
+

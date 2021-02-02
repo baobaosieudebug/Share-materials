@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    .navbar-brand{
+     background-image: url("https://ksvl.ctu.edu.vn/image/company_logo?img_id=22715&t=1604506980798");
+    }
+    #navbarNavAltMarkup{
+        width:950px;     
+         margin-left:350px ;   
+         margin-top: -200px;
+    }
+    .nav-link{
+        width:180px;
+        margin-left:85px;
+        margin-top:-64.5px;
+        margin-right: -40px;
+        color:lightblue;  
+    }
+
+
+         
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+
+
+      *{
+      margin:0;
+      padding:0;
+    }
+
+    .container{  padding-top: 20px;
+      padding-bottom: 20px;}
+    body{
+      background-color: #111845;
+    }
+
+    .background-img{
+      background-image: url("https://3.bp.blogspot.com/-piZWCW2uUbg/W2fPXxkWZgI/AAAAAAAAOu0/eydmMjTIqcwLMHEEr2H7imqoRTxMw4o9QCLcBGAs/s1600/among_trees_night_dribbble.png");
+    height: 400px;
+      width: 800px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 5% auto;
+      padding:20px;
+      border: 1px solid #2a3cad;
+      border-radius: 4px;
+      box-shadow: 0px 0px 5px #2a3cad;
+      position: relative;
+    }
+
+    .content h2{ font-size:19px;}
+
+    .box{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 300px;
+      background: #111845a6;
+      box-sizing: border-box;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgb(23, 32, 90);
+      border: 2px solid #2a3cad;
+      color: white;
+      padding: 20px;
+    }
+
+    .box:before{
+      content: '';
+      position:absolute;
+      top:0;
+      left:-100%;
+      width:100%;
+      height:100%;
+      background: rgba(255,255,255,0.1);
+      transition:0.5s;
+      pointer-events: none;
+    }
+
+    .box:hover:before{
+      left:-50%;
+      transform: skewX(-5deg);
+    }
+
+
+    .box .content{
+      position:absolute;
+      top:15px;
+      left:15px;
+      right:15px;
+      bottom:15px;
+      border:1px solid #f0a591;
+      padding:20px;
+      text-align:center;
+      box-shadow: 0 5px 10px rgba(9,0,0,0.5);
+      
+    }
+
+    .box span{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      box-sizing: border-box;
+      
+    }
+
+    .box span:nth-child(1)
+    {
+      transform:rotate(0deg);
+    }
+
+    .box span:nth-child(2)
+    {
+      transform:rotate(90deg);
+    }
+
+    .box span:nth-child(3)
+    {
+      transform:rotate(180deg);
+    }
+
+    .box span:nth-child(4)
+    {
+      transform:rotate(270deg);
+    }
+
+    .box span:before
+    {
+      content: '';
+      position: absolute;
+      width:100%;
+      height: 2px;
+      background: #50dfdb;
+      animation: animate 4s linear infinite;
+    }
+
+    @keyframes animate {
+      0% {
+      transform:scaleX(0);
+      transform-origin: left;
+      }
+      50%
+      {
+        transform:scaleX(1);
+      transform-origin: left;
+      }
+      50.1%
+      {
+        transform:scaleX(1);
+      transform-origin: right;
+        
+      }
+      
+      100%
+      {
+        transform:scaleX(0);
+      transform-origin: right;
+        
+      }
+      
+      
+    }   
+
+    .new_footer_area {
+        background: #fbfbfd;
+    }
+
+    {{!-- footer --}}
+    .f_400{
+      background: #111845;
+        border-color: #5e2ced;
+      color:white;
+      text-align:center;
+
+    }
+    .text-right{
+      background: #111845;
+        border-color: #5e2ced;
+      color:white;
+      text-align:center;
+      margin-left:300px;
+    }
+    .navbar-inverse{
+      background-color: #111845;
+        background-size: cover;
+        border:none;
+    }
+    .text-center{
+      background-color: #111845;
+        background-size: cover;
+    }
+    .col-form-label{
+      border-radius: 10px;
+      border-color: lightgreen;
+    }
+
+    .dropdown-toggle:focus{
+      background-color: #111845;
+    }
+
+    .dropdown-toggle{
+      margin-top: -56px;
+      margin-left: 10px;
+      background-color: #111845;
+    }
+    .dropdown-menu{
+       margin-left: 75px;
+      background-color:blanchedalmond;
+    }
+    .dropdown-item:hover{
+       background-color:brown;
+    }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse" >
+    <nav>
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="https://www.ctu.edu.vn/" style="margin-right:1000px;width:170px;height:170px;"></a>
+        </div>
+    </nav>
+ 
+    <nav class="navbar navbar-expand-lg navbar-black bg-black">
+        <div class="container-fluid">
+            {{!-- <a class="navbar-brand" href="#">Navbar</a> --}}
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+               <ul class="navbar-nav mr-auto">
+                 <li>
+                     <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                 </li>
+                  <li>
+                      <a class="nav-link" href="/createItem">Đăng sản phẩm</a>
+                 </li>
+                  <li>
+                     <a class="nav-link" href="/buyItem">Mua sản phẩm</a>
+                 </li>
+                 <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Other
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="home/myprofile">Thông Tin Cá Nhân</a>
+                      <a class="dropdown-item" href="home/showDetail">Sản Phẩm Cá Nhân</a>
+                       <a class="dropdown-item" href="https://www.facebook.com/profile.php?id=100006751751848">Nhắn Tin Cho Hỗ Trợ Viên</a>
+                      <div class="dropdown-divider"></div>
+                      {{!-- <a class="dropdown-item" href="#">Something else here</a> --}}
+                       <a class="dropdown-item" href="logout"><span class="glyphicon glyphicon-log-in">             LogOut</a>
+                      
+                    </div>
+               </li>
+           
+               </ul>
+               
+                </div>
+                  <form class="form-inline my-2 my-lg-0" style="margin-left:85px;margin-right:50px;">
+                    <input class="col-10 col-form-label" type="search" placeholder="Nhập vào tên sách bạn muốn tìm kiếm ?" aria-label="Search" style="text-align:center">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+</nav>
+
+<section >
+  <div class="container">
+    <div class="background-img">
+      <div class="box">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="content">
+          <h5>Chào mừng 
+            {{User.email}} 
+            đến với Website của tôi! </h5>
+          <p style="color:#00ffe9;">Đây là trang web để trao đổi tài liệu giáo trình dành cho sinh viên khoa Công Nghệ Tin(CTU).</p>
+          <p><a href="https://www.facebook.com/profile.php?id=100006751751848" style="color:#00ffe9;" target="_blank">Trang Facebook cá nhân của tôi!</a></p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section> --}}
+
+ <footer class="container-fluid text-center"> 
+ <div class="col-lg-6 col-sm-5 text-right">
+    <p class="mb-0 f_400">© Data Comunication & Computer NetWork</p>
+    <p>Made By <i class="icon_heart"></i> in <a href="https://github.com/baobaosieudebug">David Nguyen</a></p>
+  </div>
+</footer>
+</body>
+</html>
