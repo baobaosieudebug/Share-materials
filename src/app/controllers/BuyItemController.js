@@ -3,6 +3,7 @@ const { mongooseToObject } = require("../../ulti/mongoose");
 const product = require("../Model/Product");
 const user = require("../Model/Users");
 const history =require("../Model/History");
+const order =require("../Model/Ordered");
 
 class BuyItemController {
   index(req, res, next) {
@@ -58,8 +59,25 @@ class BuyItemController {
             name: products.name,
             idUserCreated: products.idUserCreated,
             idItem: products._id, 
+            nameUserBuyItem: users.name,
+            email: users.email,
+            sdt: users.sdt,
+            nh:users.nh,
+            fb:users.fb,
+            mssv:users.sv,
           })
-          products.deleteOne();
+          
+          const Ordered = order.create({
+            _id: products._id,
+            idUserCreated: products.idUserCreated,
+            name: products.name,
+            price: products.price,
+            image: products.image,
+            description: products.description,
+            slug: products.slug,
+          })
+          
+          // products.deleteOne();
           res.redirect("/home")
         })
       })

@@ -8,6 +8,12 @@ const historySchema = new Schema({
   name: String,
   idUserCreated: String,
   idItem: String,
+  nameUserBuyItem:String,
+  email: String,
+  mssv:{ type: String, unique: true }, 
+  sdt: String,
+  fb:String,
+  nh: String,
   slug: { type: String, slug: "name", unique: true }, 
 });
 module.exports = mongoose.model("History", historySchema);

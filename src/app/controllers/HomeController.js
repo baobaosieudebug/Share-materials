@@ -3,15 +3,26 @@ const user = require("../Model/Users");
 const { mongooseToObject } = require("../../ulti/mongoose");
 const { mutipleMongooseToObject } = require("../../ulti/mongoose");
 const jwt = require("jsonwebtoken");
+const history = require("../Model/History")
 
 class HomeController {
   index(req, res, next) {
     if(req.session.user){
-    res.render("home");
-   }
-   else{
-    res.redirect("/login");
-   }
+      history.findOne({idUserCreated: req.session.user._id}).exec(function (err,notice) {
+        // res.json( req.session.user._id)
+            if(notice != null){
+              history.find({idUserCreated: req.session.user._id}).exec(function (err,notices) {
+                res.redirect("home/thongbao")
+              }) 
+            }
+            else{
+              res.render("home");
+            }
+          })
+    }
+    else{
+      res.redirect("/login");
+    }
   }
 
   myProfile(req, res) {
@@ -22,9 +33,11 @@ class HomeController {
     } 
   }
 
-  backHome(req,res){
+  showNotice(req, res) {
     if(req.session.user){
-      res.redirect("/home");
+      history.find({idUserCreated: req.session.user._id}).exec(function (err,notice) {
+               res.render("thongbao", { Notice: mutipleMongooseToObject (notice)});
+          })
     }
   }
 

@@ -12,5 +12,5 @@ router.put("/:id", homeController.update);
 router.delete("/:id", homeController.delete);
 router.get("/logout",homeController.logout);
 router.post("/createItem/store", createItemController.store);
-router.post("/myprofile", homeController.backHome);
+router.get("/thongbao",homeController.showNotice);
 module.exports = router;
