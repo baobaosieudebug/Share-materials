@@ -141,7 +141,7 @@
             <th scope="col">Tên Người Mua</th>
             <th scope="col">Số Điện Thoại</th>
             <th scope="col">Email</th>
-            <th scope="col">Chỉnh Sửa Chi Tiết</th>
+            <th scope="col">Xác Nhận Bán Hàng</th>
           </tr>
         </thead>
         <tbody>
@@ -154,7 +154,7 @@
             <td>{{this.email}}</td>
             <td>
 
-              <button type="button" class="btn btn-outline-info"> <a href="#" class="btn btn-link" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-product-modal">Đã Giao Dịch</a></button>
+              <button type="button" class="btn btn-outline-info"> <a href="#" class="btn btn-link" data-bs-toggle="modal" data-id="{{this.idItem}}" data-bs-target="#delete-product-modal">Đã Giao Dịch</a></button>
             </td>
           </tr>
           {{/each}}
@@ -200,7 +200,7 @@
     var btnDeleteNews = document.getElementById('btn-delete-new');
 
     btnDeleteNews.onclick = function(){
-      deleteForm.action = '/home/' + productId +'?_method=DELETE';
+      deleteForm.action = '/home/thongbao/' + productId +'?_method=DELETE';
           deleteForm.submit();
     }
     </script>

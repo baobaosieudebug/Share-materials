@@ -80,11 +80,16 @@ class HomeController {
       .catch(next);
   }
 
-  delete(req, res, next) {
-    product
-      .deleteOne({ _id: req.params.id })
-      .then(() => res.redirect("back"))
-      .catch(next);
+  deleteShowDetail(req, res, next) {
+    product.deleteOne({_id: req.params.id})
+     .then(() => res.redirect("back"))
+    .catch(next);
+  }
+  
+ deleteHistory(req, res, next) {
+    history.deleteOne({idItem: req.params.id})
+    .then(() => res.redirect("back"))
+    .catch(next);
   }
 
   logout(req, res, next) {
