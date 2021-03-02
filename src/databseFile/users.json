@@ -1,0 +1,95 @@
+[{
+  "_id": {
+    "$oid": "600fe738fa571d06088f80b5"
+  },
+  "product": [],
+  "name": "Nguyễn Bảo",
+  "email": "hello@gmail.com",
+  "mssv": "b180754012",
+  "psw": "81dc9bdb52d04dc20036dbd8313ed055",
+  "sdt": "0854170633",
+  "nh": "Mạng Máy Tính",
+  "fb": "https://www.facebook.com/profile.php?id=100006751751848",
+  "createdAt": {
+    "$date": "2021-01-26T09:56:08.920Z"
+  },
+  "updatedAt": {
+    "$date": "2021-01-26T09:56:08.920Z"
+  },
+  "slug": "b180754012",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6018dd4378519d400c15042a"
+  },
+  "product": [
+    {}
+  ],
+  "createdAt": {
+    "$date": "2021-02-02T05:04:03.263Z"
+  },
+  "updatedAt": {
+    "$date": "2021-02-02T05:04:03.263Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6018e39a47b37d0af460f909"
+  },
+  "product": [],
+  "name": "Ngô Minh Nhật Duy",
+  "email": "duyB1807521@student.ctu.edu.vn",
+  "mssv": "B1807521",
+  "psw": "81dc9bdb52d04dc20036dbd8313ed055",
+  "sdt": "0939793939",
+  "nh": "Khoa học Máy Tính",
+  "fb": "https://www.facebook.com/nhatduydragon",
+  "createdAt": {
+    "$date": "2021-02-02T05:31:06.273Z"
+  },
+  "updatedAt": {
+    "$date": "2021-02-02T05:31:06.273Z"
+  },
+  "slug": "b1807521",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6018e6fed203b92c8c87b197"
+  },
+  "product": [],
+  "name": "Quách Huỳnh Hữu Tài",
+  "email": "taiB1807594@student.ctu.edu.vn",
+  "mssv": "1807594",
+  "psw": "81dc9bdb52d04dc20036dbd8313ed055",
+  "sdt": "0946385471",
+  "nh": "Hệ Thống Thông Tin",
+  "fb": "https://www.facebook.com/quachuynhuutai/",
+  "createdAt": {
+    "$date": "2021-02-02T05:45:34.242Z"
+  },
+  "updatedAt": {
+    "$date": "2021-02-02T05:45:34.242Z"
+  },
+  "slug": "1807594",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6018e8d2d203b92c8c87b1a2"
+  },
+  "product": [],
+  "name": "Lâm Gia Toàn",
+  "email": "toanb1807331@student.ctu.edu.vn",
+  "mssv": "b1807331",
+  "psw": "81dc9bdb52d04dc20036dbd8313ed055",
+  "sdt": "0939464845",
+  "nh": "Công Nghệ Thông Tin",
+  "fb": "https://www.facebook.com/toan.lam.5661/",
+  "createdAt": {
+    "$date": "2021-02-02T05:53:22.170Z"
+  },
+  "updatedAt": {
+    "$date": "2021-02-02T05:53:22.170Z"
+  },
+  "slug": "b1807331",
+  "__v": 0
+}]
