@@ -7,6 +7,7 @@ const createItemController = require("../app/controllers/CreateItemController.js
 router.get("/", homeController.index);
 router.get("/showDetail", homeController.showDetail);
 router.get("/myprofile", homeController.myProfile);
+router.post("/myprofile", homeController.backHome);
 router.get("/:id/edit", homeController.edit);
 router.put("/:id", homeController.update);
 router.delete("/:id", homeController.deleteShowDetail);

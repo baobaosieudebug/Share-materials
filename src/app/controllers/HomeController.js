@@ -32,6 +32,10 @@ class HomeController {
      })
     } 
   }
+  
+  backHome(req,res){
+    res.redirect("/home");
+  }
 
   showNotice(req, res) {
     if(req.session.user){
