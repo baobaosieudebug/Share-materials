@@ -32,9 +32,22 @@ class HomeController {
      })
     } 
   }
+  myProfileAdmin(req, res) {
+   
+    user.findOne({mdw:"1"}).exec(function (err, users) {
+        res.render("myprofile", { User: mongooseToObject(users) })
+     })
+  }
   
   backHome(req,res){
-    res.redirect("/home");
+    user.findOne().exec(function (err, users) {
+      if(users.mdw == "1"){
+        res.redirect("/home/admin");
+      }
+      else{
+        res.redirect("/home");
+      }
+    })
   }
 
   showNotice(req, res) {
@@ -101,6 +114,50 @@ class HomeController {
       console.log("user logged out.");
     });
     res.redirect("/login");
+  }
+  adminDashboard(req,res){
+     user.find({mdw:"0"}).exec(function(err,users){
+                  for (const position in users) {
+                    var idUser = users[position]._id;
+                    product.find({idUserCreated:idUser}).exec(function(err,productFinded){
+                      users[position].slb = productFinded.length;
+                      // users[position].save();
+                    })
+                    history.find({idUserBuyItem:idUser}).exec(function(err,productBuyed){
+                      users[position].slm = productBuyed.length;
+                      // console.log(users[position].slm)
+                      users[position].save();
+                       //day code ra 1 ham va lam thanh chuc nag 
+                    })  
+                  }
+                res.render("admin",  {  User: mutipleMongooseToObject(users)});
+    })
+  }
+
+  bannerUser(req, res, next) {
+    user.deleteOne({_id: req.params.id})
+     .then(() => res.redirect("/home/admin"))
+    .catch(next);
+  }
+
+  transactioHistory(req,res,next){
+    history.find().exec(function(err,transaction){
+        res.render("history",  {  History: mutipleMongooseToObject(transaction)});
+    })
+  }
+  deleteTransactionHistory(req,res,next){
+    history.deleteOne({_id: req.params.id})
+    .then(() => res.redirect("/home"))
+   .catch(next);
+  }
+
+  search(req,res,next){
+    res.render("formSearch");
+  }
+  resultOfSearchById(req,res,next){
+    user.find({_id:req.body.name}).exec(function(err,users){
+        res.json(users);// hien thi
+    })
   }
 }
 

@@ -68,6 +68,7 @@ class BuyItemController {
             slug: products.slug,
           })
           res.redirect("/home")
+    
         })
       })
   }

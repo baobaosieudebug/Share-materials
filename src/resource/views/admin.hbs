@@ -96,18 +96,18 @@
                      <a class="nav-link active" aria-current="page" href="/home">Home</a>
                  </li>
                   <li>
-                      <a class="nav-link" href="/createItem">Đăng sản phẩm</a>
+                      <a class="nav-link" href="/home/admin">Quản Lý Tài Khoản</a>
                  </li>
                   <li>
-                     <a class="nav-link" href="/buyItem">Mua sản phẩm</a>
+                     <a class="nav-link" href="/home/history">Quản Lý Giao Dịch</a>
                  </li>
                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Other
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="myprofile">Thông Tin Cá Nhân</a>
-                      <a class="dropdown-item" href="showDetail">Sản Phẩm Cá Nhân</a>
+                      <a class="dropdown-item" href="/home/admin/myprofile">Thông Tin Cá Nhân</a>
+                      <a class="dropdown-item" href="/home/admin/search">Tìm Kiếm Bằng Id</a>
                        <a class="dropdown-item" href="https://www.facebook.com/profile.php?id=100006751751848">Nhắn Tin Cho Hỗ Trợ Viên</a>
                       <div class="dropdown-divider"></div>
                       {{!-- <a class="dropdown-item" href="#">Something else here</a> --}}
@@ -119,10 +119,7 @@
                </ul>
                
                 </div>
-                  <form class="form-inline my-2 my-lg-0" style="margin-left:85px;margin-right:50px;">
-                    <input class="col-10 col-form-label" type="search" placeholder="Nhập vào tên sách bạn muốn tìm kiếm ?" aria-label="Search" style="text-align:center">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                  </form>
+                  
             </div>
             </div>
         </div>
@@ -132,26 +129,28 @@
 
 
     <div class="mt4">
-      <h2 style="margin-top:30px;text-align:center;">Sản Phẩm Của Tôi</h2>
+      <h2 style="margin-top:30px;text-align:center;margin-bottom:30px;">Quản Lý Người Dùng</h2>
       <table class="table mt-4">
         <thead>
           <tr>
-            <th scope="col" style="text-align:center;">STT</th>
-            <th scope="col" style="text-align:center;">Tên Sản Phẩm</th>
-            <th scope="col" style="text-align:center;">Giá Sản Phẩm</th>
-            <th scope="col" style="text-align:center;">Mô Tả Chi Tiết</th>
-            <th scope="col"  style="padding-left:25px;">Chỉnh Sửa Chi Tiết</th>
+            <th scope="col"  style="text-align:center;">STT</th>
+            <th scope="col"  style="text-align:center;">Tên Người Dùng</th>
+            <th scope="col"  style="text-align:center;">Facebook</th>
+            <th scope="col"  style="text-align:center;">Số Lượng Sản Phẩm Đăng Bán</th>
+            <th scope="col"  style="text-align:center;">Số Lượng Sản Phẩm Đã Mua</th>
+            <th scope="col"  style="padding-left:15px;">Cấp Quyền</th>
           </tr>
         </thead>
         <tbody>
-          {{#each Product}}
+          {{#each User}}
           <tr>
-            <th scope="row" style="text-align:center;" >{{sum @index 1}}</th>
-            <td style="text-align:center;">{{this.name}}</td>
-            <td style="text-align:center;">{{this.price}}</td>
-            <td style="text-align:center;">{{this.description}}</td>
+            <th scope="row"  style="text-align:center;">{{sum @index 1}}</th>
+            <td  style="text-align:center;">{{this.name}}</td>
+            <td  style="text-align:center;">{{this.fb}}</td>
+            <td style="text-align:center;">{{this.slb}}</td>
+            <td  style="text-align:center;">{{this.slm}}</td>
             <td>
-              <button type="button" class="btn btn-outline-info"> <a href="{{this._id}}/edit" class="btn btn-link">Sửa</a></button>
+            
               <button type="button" class="btn btn-outline-info"> <a href="#" class="btn btn-link" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-product-modal">Xóa</a></button>
             </td>
           </tr>
@@ -167,11 +166,11 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Xóa bài viết</h5>
+            <h5 class="modal-title">Xóa người dùng ?</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
           </div>
           <div class="modal-body">
-            <p>Bạn có thực sự muốn xóa ?</p>`
+            <p>Bạn có thực sự muốn xóa ?</p>
           </div>
           <div class="modal-footer">
             <button type="button"  class="btn btn-danger" id="btn-delete-new"> Xóa bỏ</button>
@@ -199,7 +198,7 @@
     var btnDeleteNews = document.getElementById('btn-delete-new');
 
     btnDeleteNews.onclick = function(){
-      deleteForm.action = '/home/' + productId +'?_method=DELETE';
+      deleteForm.action = '/home/admin/' + productId +'?_method=DELETE';
           deleteForm.submit();
     }
     </script>
@@ -212,3 +211,6 @@
 
 
 
+
+
+ 

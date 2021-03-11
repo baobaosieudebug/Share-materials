@@ -14,6 +14,7 @@ const historySchema = new Schema({
   sdt: String,
   fb:String,
   nh: String,
+  buyedAt: { type: Date, default: Date.now },
   slug: { type: String, slug: "name", unique: true }, 
 });
 module.exports = mongoose.model("History", historySchema);
