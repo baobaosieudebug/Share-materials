@@ -119,10 +119,7 @@
                </ul>
                
                 </div>
-                  <form class="form-inline my-2 my-lg-0" style="margin-left:85px;margin-right:50px;">
-                    <input class="col-10 col-form-label" type="search" placeholder="Nhập vào tên sách bạn muốn tìm kiếm ?" aria-label="Search" style="text-align:center">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                  </form>
+                
             </div>
             </div>
         </div>
@@ -132,26 +129,26 @@
 
 
     <div class="mt4">
-      <h2 style="margin-top:30px;">Sản Phẩm Của Tôi</h2>
+      <h2 style="margin-top:30px;text-align:center;">Sản Phẩm Của Tôi</h2>
       <table class="table mt-4">
         <thead>
           <tr>
-            <th scope="col">STT</th>
-            <th scope="col">Tên Sản Phẩm</th>
-            <th scope="col">Tên Người Mua</th>
-            <th scope="col">Số Điện Thoại</th>
-            <th scope="col">Email</th>
-            <th scope="col">Xác Nhận Bán Hàng</th>
+            <th scope="col" style="text-align:center;">STT</th>
+            <th scope="col" style="text-align:center;"> Tên Sản Phẩm</th>
+            <th scope="col" style="text-align:center;">Tên Người Mua</th>
+            <th scope="col" style="text-align:center;">Số Điện Thoại</th>
+            <th scope="col" style="text-align:center;">Email</th>
+            <th scope="col" style="text-align:left;">Xác Nhận Bán Hàng</th>
           </tr>
         </thead>
         <tbody>
           {{#each Notice}}
           <tr>
-            <th scope="row">{{sum @index 1}}</th>
-            <td>{{this.name}}</td>
-           <td><a href="{{this.fb}}">{{this.nameUserBuyItem}}</a></td>
-            <td>{{this.sdt}}</td>
-            <td>{{this.email}}</td>
+            <th scope="row"   style="text-align:center;padding-top:23px;">{{sum @index 1}}</th>
+            <td   style="text-align:center;padding-top:23px;">{{this.name}}</td>
+           <td   style="text-align:center;padding-top:23px;"><a href="{{this.fb}}">{{this.nameUserBuyItem}}</a></td>
+            <td  style="text-align:center;padding-top:23px;">{{this.sdt}}</td>
+            <td   style="text-align:center;padding-top:23px;">{{this.email}}</td>
             <td>
 
               <button type="button" class="btn btn-outline-info"> <a href="#" class="btn btn-link" data-bs-toggle="modal" data-id="{{this.idItem}}" data-bs-target="#delete-product-modal">Đã Giao Dịch</a></button>

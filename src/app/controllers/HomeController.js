@@ -12,11 +12,16 @@ class HomeController {
         // res.json( req.session.user._id)
             if(notice != null){
               history.find({idUserCreated: req.session.user._id}).exec(function (err,notices) {
-                res.redirect("home/thongbao")
+                res.redirect("home/thongbao");
               }) 
             }
             else{
-              res.render("home");
+                if(req.session.user.mdw == "1"){
+                  res.redirect("home/admin");
+                }
+                else{
+                  res.render("home");
+                }
             }
           })
     }
@@ -33,22 +38,19 @@ class HomeController {
     } 
   }
   myProfileAdmin(req, res) {
-   
+
     user.findOne({mdw:"1"}).exec(function (err, users) {
-        res.render("myprofile", { User: mongooseToObject(users) })
+        res.render("myprofileAdmin", { User: mongooseToObject(users) })
      })
   }
   
   backHome(req,res){
-    user.findOne().exec(function (err, users) {
-      if(users.mdw == "1"){
-        res.redirect("/home/admin");
-      }
-      else{
         res.redirect("/home");
-      }
-    })
   }
+
+  backHomeAdmin(req,res){
+      res.redirect("/home/admin");
+}
 
   showNotice(req, res) {
     if(req.session.user){
@@ -151,11 +153,42 @@ class HomeController {
    .catch(next);
   }
 
-  search(req,res,next){
-    res.render("formSearch");
+  searchID(req,res,next){
+    res.render("formSearchById");
+  }
+
+  searchName(req,res,next){
+    res.render("formSearchByName");
+  }
+  
+  searchEmail(req,res,next){
+    res.render("formSearchByEmail");
+  }
+
+  searchPhone(req,res,next){
+    res.render("formSearchByPhone");
   }
   resultOfSearchById(req,res,next){
-    user.find({_id:req.body.name}).exec(function(err,users){
+    user.findOne({_id:req.body.name}).exec(function(err,user){
+        // res.json(user);// hien thi
+        res.render("searchView",{User:mongooseToObject(user)});
+    })  
+  }
+
+  resultOfSearchByName(req,res,next){
+    user.findOne({name:req.body.name}).exec(function(err,users){
+        res.json(users);// hien thi
+    })
+  }
+
+  resultOfSearchByEmail(req,res,next){
+    user.findOne({email:req.body.name}).exec(function(err,user){
+        res.json(user);// hien thi
+    })
+  }
+
+  resultOfSearchByPhone(req,res,next){
+    user.findOne({sdt:req.body.name}).exec(function(err,users){
         res.json(users);// hien thi
     })
   }
