@@ -3,7 +3,9 @@ const user = require("../Model/Users");
 const { mongooseToObject } = require("../../ulti/mongoose");
 const { mutipleMongooseToObject } = require("../../ulti/mongoose");
 const jwt = require("jsonwebtoken");
-const history = require("../Model/History")
+const history = require("../Model/History");
+
+const { isEmpty } = require("lodash");
 
 class HomeController {
   index(req, res, next) {
@@ -146,52 +148,46 @@ class HomeController {
     history.find().exec(function(err,transaction){
         res.render("history",  {  History: mutipleMongooseToObject(transaction)});
     })
+  
   }
   deleteTransactionHistory(req,res,next){
     history.deleteOne({_id: req.params.id})
-    .then(() => res.redirect("/home"))
+    .then(() => res.redirect("/home/admin"))
    .catch(next);
-  }
-
-  searchID(req,res,next){
-    res.render("formSearchById");
   }
 
   searchName(req,res,next){
     res.render("formSearchByName");
   }
   
-  searchEmail(req,res,next){
-    res.render("formSearchByEmail");
-  }
-
-  searchPhone(req,res,next){
-    res.render("formSearchByPhone");
-  }
-  resultOfSearchById(req,res,next){
-    user.findOne({_id:req.body.name}).exec(function(err,user){
-        // res.json(user);// hien thi
-        res.render("searchView",{User:mongooseToObject(user)});
-    })  
-  }
-
+ 
   resultOfSearchByName(req,res,next){
-    user.findOne({name:req.body.name}).exec(function(err,users){
-        res.json(users);// hien thi
+    user.find({name:req.body.name}).exec(function(err,users){
+      if(req.body.name == undefined){
+        res.redirect("/home/admin")
+      }
+      else{
+        if(users == null){
+          res.redirect("/home/admin");
+        }
+        else{
+           res.render("admin",{User:mutipleMongooseToObject(users)});
+        }
+      }
     })
   }
 
-  resultOfSearchByEmail(req,res,next){
-    user.findOne({email:req.body.name}).exec(function(err,user){
-        res.json(user);// hien thi
+  resultTitleBook(req,res,next){
+    product.find({name:req.body.name}).exec(function(err,products){
+      if(isEmpty(products)){
+        res.redirect("/home");
+      }
+      else{
+        res.render("buyItem", { Product: mutipleMongooseToObject(products) });
+      }
     })
   }
 
-  resultOfSearchByPhone(req,res,next){
-    user.findOne({sdt:req.body.name}).exec(function(err,users){
-        res.json(users);// hien thi
-    })
-  }
 }
 
 module.exports = new HomeController();

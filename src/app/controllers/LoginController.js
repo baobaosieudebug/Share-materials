@@ -10,6 +10,7 @@ const { count } = require("../Model/Product");
 class LoginController {
   index(req, res, next) {
     res.render("login");
+    // res.render("home1");
   }
 
   checklogin(req, res) {

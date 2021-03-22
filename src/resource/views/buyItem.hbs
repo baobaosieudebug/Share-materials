@@ -58,7 +58,7 @@
     }
 
     .vertical-menu a.active {
-      background-color: #3bc540;
+      background-color: rgb(24, 187, 187);
       color: white;
     }
     {{!-- end vertical menu --}}
@@ -196,6 +196,10 @@
       margin-left:355px;
 
     }
+    .form-control{
+      width: 280px;
+      height: 35px;
+    }
   </style>
 </head>
 <body>
@@ -205,13 +209,17 @@
     <div class="col-sm-3 sidenav">
     
       
-      <div class="input-group" style="margin-top:50px" >
-        <input type="text" class="form-control" placeholder="Search Blog.." style="margin-bottom:35px;">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button" style="margin-top:-35px">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
+      <div style="margin-top:50px" >
+     
+        
+        {{!-- <span class="input-group-btn"> --}}
+          <form method="POST" action="buyItem">
+             <input type="text" class="form-control" placeholder="Search Book.." style="margin-bottom:35px;" name="name">
+                <button class="btn btn-default" type="sumit" style="margin-top:-70px;margin-right:5px;">
+                  <span class="glyphicon glyphicon-search"></span>
+               </button>
+          </form>
+        {{!-- </span> --}}
       </div>
       <div class="vertical-menu">
         <a href="/Home" class="active">Home</a>

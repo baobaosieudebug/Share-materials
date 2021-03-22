@@ -6,7 +6,8 @@ mongoose.plugin(slug);
 const historySchema = new Schema({
   idUserBuyItem: String,
   name: String,
-  idUserCreated: String,
+  // idUserCreated: String,
+  nameUserCreated: String,
   idItem: String,
   nameUserBuyItem:String,
   email: String,
