@@ -15,18 +15,18 @@
     /* Set gray background color and 100% height */
     .sidenav {
       position: fixed;
-      background-color: rgb(58, 51, 51);
+    background-color:rgba(4, 7, 24, 0.534);
       height: 100%;
       
     }
     
     /* Set black background color, white text and some padding */
     footer {
-      background-color: #555;
+      background-color:transparent;
       color: white;
       height: 40px;
-      margin-top: 30px;
-      {{!-- padding: 15px; --}}
+      margin-top: 60px;
+      margin-left:200px;
     }
     
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -42,11 +42,10 @@
     .vertical-menu {
       width: 282px;
       text-align: center  ;
-    
     }
 
     .vertical-menu a {
-      background-color:lightgreen;
+      background-color:rgba(196, 207, 196, 0.747);
       color: black;
       display: block;
       padding: 12px;
@@ -54,11 +53,12 @@
     }
 
     .vertical-menu a:hover {
-      background-color: #90cf9281;
+      background-color: #0f1a0f6b;
+      color:rgba(250, 249, 249, 0.801);
     }
 
     .vertical-menu a.active {
-      background-color: rgb(24, 187, 187);
+      background-color: rgba(3, 24, 24, 0.164);
       color: white;
     }
     {{!-- end vertical menu --}}
@@ -71,7 +71,7 @@
     }
 
     body{
-        background-color:whitesmoke ;
+      background-color:rgba(2, 3, 8, 0.733);
         height: 100vh;
         font-family: Roboto;
         display: grid;
@@ -88,13 +88,14 @@
         margin-top: 57.5px;
     }
     .card{
-        background-color:#8acac5;
+        background-color:transparent;
         margin-top: 25px;  
-         margin-left: 30px;  
+        margin-left: 30px;  
         height: 650px;
         width: 267.5px;
         border-radius: 20px;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        
     }
     .container{
         position: relative;
@@ -109,7 +110,7 @@
     }
 
     .container::after{
-        {{!-- content: "";
+       content: "";
         height: 100%;
         width: 23%;
         position: absolute;
@@ -166,18 +167,21 @@
         background-image: linear-gradient(135deg, #ff758c , #ff7eb3);
     }
     {{!-- end card item --}}
-    #pagnation{
+    #pagnations{
       width:1217.5px;
       height:70px;
       margin-left: 90px;
-      background-color:white;
+   background-color:transparent;
     }
     #previous{
-      background-color:violet;
+      background-color:rgba(255, 253, 255, 0.705);
       margin-left:550px;
     }
     #next{
-      background-color:violet;
+       background-color:rgba(255, 253, 255, 0.705);
+    }
+    .page-item{
+        background-color:rgba(255, 253, 255, 0.705);
     }
     {{!-- footer --}}
     .f_400{
@@ -199,6 +203,9 @@
     .form-control{
       width: 280px;
       height: 35px;
+    }
+    .text-center{
+      margin-left:210px;
     }
   </style>
 </head>
@@ -223,16 +230,17 @@
       </div>
       <div class="vertical-menu">
         <a href="/Home" class="active">Home</a>
-        <a href="/buyItem?page=1">Khoa Học Máy Tính</a>
-        <a href="/buyItem?page=2">Mạng Máy Tính & TTDL</a>
-        <a href="/buyItem?page=3">Hệ Thống Thông Tin</a>
-        <a href="/buyItem?page=4">Kỹ Thuật Phần Mềm</a>
-        <a href="/buyItem?page=5">Công Nghệ Thông Tin</a>
-        <a href="/buyItem?page=6">Khoa Kinh Tế</a>
-        <a href="/buyItem?page=7">Khoa Nông Nghiệp</a>
-        <a href="/buyItem?page=8">Khoa Sinh Học Ứng Dụng</a>
-        <a href="/buyItem?page=9">Khoa Công Nghệ</a>
-        <a href="/buyItem?page=10">Khoa Chính Trị</a>
+        <a href="/category/khmt">Khoa Học Máy Tính</a>
+        <a href="/category/mmt">Mạng Máy Tính & TTDL</a>
+        <a href="/category/httt">Hệ Thống Thông Tin</a>
+        <a href="/category/ktpm">Kỹ Thuật Phần Mềm</a>
+        <a href="/category/cntt">Công Nghệ Thông Tin</a>
+        <a href="/category/kt">Khoa Kinh Tế</a>
+        <a href="/category/nn">Khoa Nông Nghiệp</a>
+        <a href="/category/shud">Khoa Sinh Học Ứng Dụng</a>
+        <a href="/category/cn">Khoa Công Nghệ</a>
+        <a href="/category/ct">Khoa Chính Trị</a>
+      
       </div>    
     </div>
 
@@ -246,8 +254,8 @@
                       <img src="{{this.image}}" alt="Ảnh 1">
                   </div>
                   <div class="noi-dung">
-                    <h3> <a href="buyItem/{{this.slug}}">{{this.name}}</a></h3> 
-                      <p>{{this.description}}</p>
+                    <h3 > <a href="buyItem/{{this.slug}}" style="color:rgba(255, 99, 71, 0.658)">{{this.name}}</a></h3> 
+                      <p style="color:rgb(221, 212, 212)";>{{this.description}}</p>
                     <a href="buyItem/{{this.slug}}"><button class="btn1">Tìm Hiểu Thêm</button></a> 
                   </div>
               </div>
@@ -259,7 +267,7 @@
 
     </div>
     {{!-- menu pagnation --}}
-       <div class="pagnation" id="pagnation">
+       <div class="pagnation" id="pagnations">
           <nav aria-label="Page navigation example">
             <ul class="pagination">
               <li class="page-item"><a id="previous" class="page-link" href="/buyItem?page=10">Previous</a></li>

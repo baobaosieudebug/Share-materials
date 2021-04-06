@@ -7,11 +7,13 @@ const orderSchema = new Schema({
   name: String,
   price: String,
   image: String,
+ 
   description:{
     type: String,
     min: 5,
     max: 150,
   },
+
 
   slug: { type: String, unique: true }, 
 });

@@ -188,6 +188,10 @@ class HomeController {
     })
   }
 
+  showNotices(req, res) {
+  res.send("he;llooosadasdadaasda");
+  }
+
 }
 
 module.exports = new HomeController();

@@ -5,6 +5,7 @@ const user = require("../Model/Users");
 const history =require("../Model/History");
 const order =require("../Model/Ordered");
 const { isEmpty } = require("lodash");
+const Product = require("../Model/Product");
 
 class BuyItemController {
   index(req, res, next) {
@@ -14,7 +15,7 @@ class BuyItemController {
         limit: 6, //bien (so luong bai viet tren 1 page)
       };
       product
-        .find()
+        .find({state:'sansang'})
         .skip(pageOptions.page * pageOptions.limit) //bo qua kết quả của phép tính trong ngoặc bài viết trong db;vd:12->lấy từ bài viết 13 limit 5 bài qua trang
         .limit(pageOptions.limit)
         .exec(function (err, products) {
@@ -51,6 +52,7 @@ class BuyItemController {
                 const newHistory = history.create({
                 idUserBuyItem: req.session.user._id,
                 name: products.name,
+                idUserCreated: userCreated._id,
                 nameUserCreated: userCreated.name,
                 idItem: products._id, 
                 nameUserBuyItem: users.name,
@@ -70,6 +72,8 @@ class BuyItemController {
                 description: products.description,
                 slug: products.slug,
               })
+              product.findByIdAndUpdate({_id:products._id}, { state:"dangcapnhat"},
+              function (err, docs) {})
               res.redirect("/home")
         
         })
@@ -88,6 +92,29 @@ class BuyItemController {
       }
     })
   }
+
+  showKHMT(req,res){
+    res.send("sach khmt");
+  }
+  showCNTT(req,res){
+    res.send("he;llooosadasdadaasda");
+  }
+
+  delete(req,res){
+    product.find({idUserCreated:'6018e39a47b37d0af460f909'}).exec(function(err,products){
+    
+    // product.findByIdAndUpdate({_id:'6018e4d647b37d0af460f90e'}, { state:"dangcapnhat"},
+    //                         function (err, docs) {
+    // if (err){
+    //     console.log(err)
+    // }
+    // else{
+    //     console.log("Updated User : ", docs);
+    // }
+    })
+
+  }
+
 
 }
 

@@ -7,6 +7,7 @@ const productSchema = new Schema({
   name: String,
   price: String,
   image: String,
+  state: {type: String,default:"sansang"},
   description:{
     type: String,
     min: 5,

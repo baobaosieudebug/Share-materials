@@ -28,4 +28,7 @@ router.get("/logout",homeController.logout);
 router.post("/createItem/store", createItemController.store);
 router.get("/thongbao",homeController.showNotice);
 router.delete("/thongbao/:id", homeController.deleteHistory);
+
+router.get("/cntt",homeController.showNotices);
+
 module.exports = router;

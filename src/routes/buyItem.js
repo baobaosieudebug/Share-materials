@@ -8,4 +8,6 @@ router.get("/:slug/information", buyItemController.showDetailPersonBuyItem);
 router.post("/:slug/information", buyItemController.formOrder);
 router.get("/:slug/order", buyItemController.formOrder);
 router.post("/", buyItemController.resultTitleBook);
+
+
 module.exports = router;
