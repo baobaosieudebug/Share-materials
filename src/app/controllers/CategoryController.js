@@ -10,21 +10,14 @@ class CategoryController {
         res.render("cate");
     }
   showKHMT(req,res){
-    user.findOne({nh: "Khoa học Máy Tính"}).exec(function (err,user) {
-        product.find({idUserCreated:user.id}).exec(function(err,kq){
-                res.json(kq);
-        })
-   })
+        product.find({name:"Giáo trình Môn Thị Giác Máy Tính"}).exec(function(err,products){
+          res.render  ("buyItem", { Product:mutipleMongooseToObject(products)});
+        });
   }
   showCNTT(req,res){
-    user.find({nh: "Công Nghệ Thông Tin"}).exec(function (err,user) {
-        // product.find({idUserCreated:user.id}).exec(function(err,kq){
-                res.json(user.name);
-        // })
-   })
-  }
-  showMMT(req,res){
-    res.send("he;llooosadasdadaasda");
+    product.find({name:"giáo trình môn lý thuyết đồ thị"}).exec(function(err,products){
+      res.render("buyItem", { Product:mutipleMongooseToObject(products)})
+    });
   }
   showError(req,res){
     res.redirect("/buyItem");

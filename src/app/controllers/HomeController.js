@@ -14,7 +14,7 @@ class HomeController {
         // res.json( req.session.user._id)
             if(notice != null){
               history.find({idUserCreated: req.session.user._id}).exec(function (err,notices) {
-                res.redirect("home/thongbao");
+                res.redirect("home/notice");
               }) 
             }
             else{
@@ -111,6 +111,8 @@ class HomeController {
     history.deleteOne({idItem: req.params.id})
     .then(() => res.redirect("back"))
     .catch(next);
+    product.findByIdAndUpdate({_id:req.params.id}, { state:"daban"},
+    function (err, docs) {})
   }
 
   logout(req, res, next) {

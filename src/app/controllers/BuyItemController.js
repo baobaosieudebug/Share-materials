@@ -47,36 +47,41 @@ class BuyItemController {
   formOrder(req,res){
     user.findOne({_id:req.session.user._id}).exec(function (err, users) { 
       product.findOne({slug: req.params.slug}).exec(function (err, products) {
-        user.findOne({_id:products.idUserCreated}).exec(function (err, userCreated){
+        if(products.idUserCreated === req.session.user._id){
+              res.redirect("/buyItem");
+        }
+        else{
+              user.findOne({_id:products.idUserCreated}).exec(function (err, userCreated){
 
-                const newHistory = history.create({
-                idUserBuyItem: req.session.user._id,
-                name: products.name,
-                idUserCreated: userCreated._id,
-                nameUserCreated: userCreated.name,
-                idItem: products._id, 
-                nameUserBuyItem: users.name,
-                email: users.email,
-                sdt: users.sdt,
-                nh:users.nh,
-                fb:users.fb,
-                mssv:users.sv,
-              })
-              
-              const Ordered = order.create({
-                _id: products._id,
-                idUserCreated: products.idUserCreated,
-                name: products.name,
-                price: products.price,
-                image: products.image,
-                description: products.description,
-                slug: products.slug,
-              })
-              product.findByIdAndUpdate({_id:products._id}, { state:"dangcapnhat"},
-              function (err, docs) {})
-              res.redirect("/home")
-        
-        })
+                              const newHistory = history.create({
+                              idUserBuyItem: req.session.user._id,
+                              name: products.name,
+                              idUserCreated: userCreated._id,
+                              nameUserCreated: userCreated.name,
+                              idItem: products._id, 
+                              nameUserBuyItem: users.name,
+                              email: users.email,
+                              sdt: users.sdt,
+                              nh:users.nh,
+                              fb:users.fb,
+                              mssv:users.sv,
+                            })
+                            
+                            const Ordered = order.create({
+                              _id: products._id,
+                              idUserCreated: products.idUserCreated,
+                              name: products.name,
+                              price: products.price,
+                              image: products.image,
+                              description: products.description,
+                              slug: products.slug,
+                            })
+                            product.findByIdAndUpdate({_id:products._id}, { state:"dangcapnhat"},
+                            function (err, docs) {})
+                            res.redirect("/home")
+                      
+                      })
+        } 
       })
     })
   }
@@ -100,20 +105,6 @@ class BuyItemController {
     res.send("he;llooosadasdadaasda");
   }
 
-  delete(req,res){
-    product.find({idUserCreated:'6018e39a47b37d0af460f909'}).exec(function(err,products){
-    
-    // product.findByIdAndUpdate({_id:'6018e4d647b37d0af460f90e'}, { state:"dangcapnhat"},
-    //                         function (err, docs) {
-    // if (err){
-    //     console.log(err)
-    // }
-    // else{
-    //     console.log("Updated User : ", docs);
-    // }
-    })
-
-  }
 
 
 }

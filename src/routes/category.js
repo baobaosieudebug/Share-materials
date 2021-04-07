@@ -5,7 +5,7 @@ const categoryController = require("../app/controllers/CategoryController.js");
 
  router.get("/cntt",categoryController.showCNTT);
 router.get("/khmt",categoryController.showKHMT);
-router.get("/mmt",categoryController.showMMT);
+router.get("/mmt",categoryController.showError);
 router.get("/ktpm",categoryController.showError);
 router.get("/httt",categoryController.showError);
 router.get("/kt",categoryController.showError);

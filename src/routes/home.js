@@ -26,8 +26,8 @@ router.put("/:id", homeController.update);
 router.delete("/:id", homeController.deleteShowDetail);
 router.get("/logout",homeController.logout);
 router.post("/createItem/store", createItemController.store);
-router.get("/thongbao",homeController.showNotice);
-router.delete("/thongbao/:id", homeController.deleteHistory);
+router.get("/notice",homeController.showNotice);
+router.delete("/notice/:id", homeController.deleteHistory);
 
 router.get("/cntt",homeController.showNotices);
 
