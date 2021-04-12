@@ -31,4 +31,67 @@ router.delete("/notice/:id", homeController.deleteHistory);
 
 router.get("/cntt",homeController.showNotices);
 
+
+const nodemailer =  require('nodemailer');
+router.get('/contact', function(req, res) {
+    res.render('contact');
+});
+router.post('/contact', function(req, res) {
+  
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'baob1807540@student.ctu.edu.vn',
+      pass: '4pum!fv6'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'youremail@gmail.com',
+    to: 'davidnguyen28042000@gmail.com',
+    subject: 'Sending Email using Node.js',
+    text: 'That was easy!'
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  })
+});
+
+var formidable = require('formidable');
+var fs = require('fs');
+router.get("/upload",function(req,res){
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
+    res.write('<input type="file" name="filetoupload"><br>');
+    res.write('<input type="submit">');
+    res.write('</form>');
+    return res.end();
+})
+
+
+router.post("/fileupload",function(req,res){
+  var form = new formidable.IncomingForm();
+  form.parse(req, function (err, fields, files) {
+        const path = require("path")
+
+        const pathToFile = path.join(files.filetoupload.path)
+        const pathToNewDestination = path.join("D:/myblog/src/img", files.filetoupload.name)
+        fs.copyFile(pathToFile, pathToNewDestination, function(err) {
+          if (err) {
+            throw err
+          } else {
+            console.log("Successfully copied and moved the file!")
+          }
+        })
+    res.write('File uploaded');
+    res.end();
+  });
+
+})
+
 module.exports = router;

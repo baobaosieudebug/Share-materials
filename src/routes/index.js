@@ -5,10 +5,10 @@ const registerRouter = require("./register");
 const buyItemRouter = require("./buyItem");
 const createItemRouter = require("./createItem");
 const categoryRouter = require("./category");
-// const indexRouter = require("./introduce");
+const indexRouter = require("./introduce");
 
 function route(app) {
-  // app.use("/", indexRouter);
+  app.use("/", indexRouter);
   app.use("/login", loginRouter);
   app.use("/logout", logoutRouter);
   app.use("/register", registerRouter);

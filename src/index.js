@@ -8,8 +8,6 @@ const db = require("./config/db");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const multer = require("multer");
-const upload = multer();
 
 //Connect DB
 db.connect();
@@ -18,7 +16,7 @@ const port = 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(upload.array());
+// app.use(upload.array());
 app.use(cookieParser());
 
 
@@ -55,6 +53,7 @@ app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resource", "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static('public'));
 
 app.use(methodOverride("_method"));
 //Route
