@@ -1,7 +1,5 @@
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +21,7 @@ html {
   box-sizing: inherit;
 }
 body {
-   background-image: url("../img/anh1.jpg");
+ background-image: url("../img/bg.jpg");
   font-family: 'Open Sans', arial, sans-serif;
   color: darkslategray;
 }
@@ -361,7 +359,7 @@ td {
     bottom: 0px;
   }
   main[role=main] {
-    margin: 15px 0 40px 200px;
+    margin: 75px 0 40px 200px;
   }
   main[role=main]:after {
     content: "";
@@ -417,6 +415,7 @@ td {
     </style>
 </head>
 <body>
+   
 <nav role="navigation">
   <ul class="main">
     {{!-- <li class="dashboard"><a href="/home/admin">Dashboard</a></li> --}}
@@ -429,87 +428,7 @@ td {
        <li class="logout"><a href="logout">Log Out</a></li>
   </ul>
 </nav>
-
-<main role="main">
-  
-
-
-
-  <section class="panel" style="border:3px solid black;">
-    <h1 style="text-align:center;color:rgb(114, 172, 15);margin-top:10px;">Sản Phẩm Của Tôi</h1>
-    <table style="border-top:1px solid black;">
-      <tr style="background-color: rgb(102, 130, 182);border:2px solid black;">
-            <th scope="col" style="text-align:center;">STT</th>
-            <th scope="col" style="text-align:center;">Tên Sản Phẩm</th>
-            <th scope="col" style="text-align:center;">Giá Sản Phẩm</th>
-            <th scope="col" style="text-align:center;">Mô Tả Chi Tiết</th>
-            <th scope="col"  style="padding-left:25px;colspan: 2;">Chỉnh Sửa Chi Tiết</th>
-      </tr>
-  
-        
-           {{#each Product}}
-          <tr>
-            <th scope="row" style="text-align:center;border:1px solid black;" >{{sum @index 1}}</th>
-            <td   style="text-align:center;padding-top:23px;border:1px solid black;">{{this.name}}</td>
-            <td   style="text-align:center;padding-top:23px;border:1px solid black;">{{this.price}}</td>
-            <td   style="text-align:center;padding-top:23px;border:1px solid black;">{{this.description}}</td>
-            <td  style="border:1px solid black;text-align: center; ">
-                 <button type="button" class="btn btn-outline-info"> <a href="{{this._id}}/upfile" class="btn btn-link">Cập nhật ảnh</a></button>
-              <button type="button" class="btn btn-outline-info"> <a href="{{this._id}}/edit" class="btn btn-link">Sửa</a></button>
- 
-              <button type="button" class="btn btn-outline-info"> <a href="#" class="btn btn-link" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-product-modal">Xóa</a></button>
-            </td>
-          </tr>
-          {{/each}}
-           
-          </tr>
-    </table>
-    
-  </section>
-
-
-</main>
-{{!-- <footer role="contentinfo">DAVID Nguyen</footer> --}}
-
-
-    <form name="delete" method="POST"></form>
- {{!-- confitm delete --}}
-    <div class="modal" tabindex="-1" id="delete-product-modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Xóa lịch sử?</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
-          </div>
-          <div class="modal-body">
-            <p>Bạn có thực sự muốn xóa ?</p> 
-          </div>
-          <div class="modal-footer">
-            <button type="button"  class="btn btn-danger" id="btn-delete-new"> Xóa bỏ</button>
-            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Hủy</button>
-          </div>
-        </div>
-      </div>
-    </div>  
-  <script >
-    var productId;
-    var deleteForm=document.forms['delete'];
-    $('#delete-product-modal').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget) // Button that triggered the modal
-     productId = button.data('id') // Extract info from data-* attributes
-
-    })
-    var btnDeleteNews = document.getElementById('btn-delete-new');
-     btnDeleteNews.onclick = function(){
-      deleteForm.action = '/home/' + productId +'?_method=DELETE';
-     deleteForm.submit();
-    } 
-
-    </script>
 </body>
 </html>
-
-
-
 
 

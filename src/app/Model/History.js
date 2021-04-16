@@ -11,7 +11,7 @@ const historySchema = new Schema({
   idItem: String,
   nameUserBuyItem:String,
   email: String,
-  mssv:{ type: String, unique: true }, 
+  mssv:{ type: String }, 
   sdt: String,
   fb:String,
   nh: String,

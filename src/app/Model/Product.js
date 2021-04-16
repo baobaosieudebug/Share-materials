@@ -6,7 +6,7 @@ const productSchema = new Schema({
   idUserCreated: String,
   name: String,
   price: String,
-  image: String,
+  image:{type: String,default:"books.PNG"},
   state: {type: String,default:"sansang"},
   description:{
     type: String,

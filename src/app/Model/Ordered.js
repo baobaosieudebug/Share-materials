@@ -15,6 +15,6 @@ const orderSchema = new Schema({
   },
 
 
-  slug: { type: String, unique: true }, 
+  slug: { type: String}, 
 });
 module.exports = mongoose.model("Ordered", orderSchema);

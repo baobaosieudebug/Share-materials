@@ -5,7 +5,7 @@
 <style>
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url("../img/bg-1.jpg");
+    background-image: url("../img/bg-3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -76,19 +76,25 @@ a {
 </head>
 <body>
 
-<form  method="POST" action="search/resultByEmail">
-  <div class="container">
-    <h1>Find customer </h1>
-    <p>Please fill in this form information of customer.</p>
-    <hr>
-     <label for="name"><b>Thông tin cần tìm kiếm </b></label>
-    <input type="text" placeholder="Enter information" name="name" id="name" required
+<form method="POST" action="/home/contact">
+  <div class="container" style="margin-top:20px">
+    <h1 style="text-align:center;margin-bottom:15px">Information Contact Form</h1>
+    <p  style="text-align:center;margin-bottom:15px">Đăng nhập bằng tài khoản google gmail của bạn</p>
     <hr>
 
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-input" name="username" id="email" placeholder="Eg: johndoe@email.com">
 
-    <button type="submit" class="registerbtn">Find Now</button>
+   <label for="password" class="form-label" style="margin-top:15px;">PassWord</label>
+        <input type="password" class="form-input" name="password" id="password" placeholder="Type Your PassWord">
+
+    <label for="email" class="form-label">To Email</label>
+     <input type="email" class="form-input" name="receive" id="email">
+
+    <hr>
+    <button type="submit" class="registerbtn">Gửi Email</button>
   </div>
-   
+
 </form>
 
 </body>

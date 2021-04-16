@@ -5,6 +5,10 @@ const { mutipleMongooseToObject } = require("../../ulti/mongoose");
 const jwt = require("jsonwebtoken");
 const history = require("../Model/History");
 
+var formidable = require('formidable');
+var fs = require('fs');
+
+const nodemailer =  require('nodemailer');
 const { isEmpty } = require("lodash");
 
 class HomeController {
@@ -61,7 +65,66 @@ class HomeController {
           })
     }
   }
+  store(req, res) {
+    
+    //Uploadfil in public/img
 
+ var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+          const path = require("path")
+  
+          const pathToFile = path.join(files.filetoupload.path)
+          const pathToNewDestination = path.join("D:/myblog/public/images", files.filetoupload.name)
+          fs.copyFile(pathToFile, pathToNewDestination, function(err) {
+            if (err) {
+              throw err
+            } else {
+              console.log("Successfully copied and moved the file!")
+            }
+          })
+     //  res.write('File uploaded');
+      res.end();
+    });
+ if(req.session.user){
+
+   User.findOne().exec(function (err, user) {
+     const sanpham = product.create({
+       idUserCreated: req.session.user._id,
+       name: req.body.name,
+       price: req.body.price,
+       image: req.body.filetoupload,
+       description: req.body.description,
+     });
+
+     const newUser = User.create({
+       product: sanpham,
+     });
+     res.redirect("/home");
+   });
+   
+ }
+ else{
+  res.redirect("/login");
+ }
+}
+
+
+
+showProductById(req, res) {
+ if(req.session.user){
+   User.findOne().exec(function (err, user) {
+     const idUser = user._id;
+     product.find({ idUserCreated: idUser }).exec(function (err, products) {
+       res.render("showDetail", {
+         Product: mutipleMongooseToObject(products),
+       });
+     });
+   });
+  }
+  else{
+   res.redirect("/login");
+  }
+}
   showDetail(req, res) {
     if(req.session.user){
       product
@@ -190,9 +253,70 @@ class HomeController {
     })
   }
 
-  showNotices(req, res) {
-  res.send("he;llooosadasdadaasda");
+  formcontact(req,res){
+    res.render('contactform');
   }
+  contactWithEmail(req,res){
+        // res.json(req.body)
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: req.body.username,
+        pass: req.body.password,
+      }
+    
+    });
+
+    var mailOptions = {
+      from: req.body.username,
+      to: req.body.receive,
+      subject: 'Sending Email From Share-material Website in CTU',
+      text: 'Chào '+req.body.receive+' Hiện tại tôi đang có nhu cầu trao đổi tài liệu với bạn hãy vui lòng kiểm tra thôn báo email của tôi là ' + req.body.username +'.Xin Cám Ơn!!'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        if(error.code == 'EAUTH'){
+          res.render('contactform');
+        }
+      } 
+    })
+      res.redirect("/home");
+    }
+
+    formUpload(req,res,next){
+      product
+      .findById({ _id: req.params.id })
+      .then((product) =>
+        res.render("upfile", { Product: mongooseToObject(product) })
+      )
+      .catch(next);
+    }
+  
+    upfile(req,res,next){
+      // Uploadfil in public/img
+      var form = new formidable.IncomingForm();
+      form.parse(req, function (err, fields, files) {
+            const path = require("path")
+     
+            const pathToFile = path.join(files.filetoupload.path)
+            const pathToNewDestination = path.join("D:/myblog/public/images", files.filetoupload.name)
+            fs.copyFile(pathToFile, pathToNewDestination, function(err) {
+              if (err) {
+                throw err
+              } else {
+                console.log("Successfully copied and moved the file!")
+              }
+              product
+              .update({ _id: req.params.id },{$set:{image:files.filetoupload.name}})
+              .then(() =>  res.redirect("/home"))
+              .catch(next);
+            })
+        res.redirect("/home");
+      });
+    
+    }
+  
 
 }
 

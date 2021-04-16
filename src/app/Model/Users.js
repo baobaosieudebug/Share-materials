@@ -5,7 +5,7 @@ mongoose.plugin(slug);
 const User = new Schema({
   name:String,
   email: String,
-  mssv:{ type: String, unique: true }, 
+  mssv:{ type: String}, 
   psw: String,
   sdt: String,
   fb:String,
