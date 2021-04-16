@@ -23,7 +23,7 @@ html {
   box-sizing: inherit;
 }
 body {
-   background-image: url("../img/anh1.jpg");
+  background-image: url("../img/bg.jpg");
   font-family: 'Open Sans', arial, sans-serif;
   color: darkslategray;
 }
@@ -443,7 +443,7 @@ td {
             <th scope="col" style="text-align:center;">Tên Sản Phẩm</th>
             <th scope="col" style="text-align:center;">Giá Sản Phẩm</th>
             <th scope="col" style="text-align:center;">Mô Tả Chi Tiết</th>
-            <th scope="col"  style="padding-left:25px;colspan: 2;">Chỉnh Sửa Chi Tiết</th>
+            <th scope="col"  style="padding-left:25px;colspan: 2;text-align:center;">Chỉnh Sửa Chi Tiết</th>
       </tr>
   
         
@@ -454,10 +454,10 @@ td {
             <td   style="text-align:center;padding-top:23px;border:1px solid black;">{{this.price}}</td>
             <td   style="text-align:center;padding-top:23px;border:1px solid black;">{{this.description}}</td>
             <td  style="border:1px solid black;text-align: center; ">
-                 <button type="button" class="btn btn-outline-info"> <a href="{{this._id}}/upfile" class="btn btn-link">Cập nhật ảnh</a></button>
+             
               <button type="button" class="btn btn-outline-info"> <a href="{{this._id}}/edit" class="btn btn-link">Sửa</a></button>
- 
               <button type="button" class="btn btn-outline-info"> <a href="#" class="btn btn-link" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-product-modal">Xóa</a></button>
+                  <button type="button" class="btn btn-outline-info"> <a href="{{this._id}}/upfile" class="btn btn-link">Cập nhật ảnh</a></button>
             </td>
           </tr>
           {{/each}}
