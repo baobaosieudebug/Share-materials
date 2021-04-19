@@ -1,0 +1,77 @@
+[{
+  "_id": {
+    "$oid": "606c9b547d7a291cc8635eeb"
+  },
+  "idUserBuyItem": "6018e39a47b37d0af460f909",
+  "name": "Giáo Trình Môn Trí Tuệ Nhân Tạo",
+  "idUserCreated": "6018e6fed203b92c8c87b197",
+  "nameUserCreated": "Quách Huỳnh Hữu Tài",
+  "idItem": "6018ea03cd83c8126c5940ce",
+  "nameUserBuyItem": "Ngô Minh Nhật Duy",
+  "email": "duyB1807521@student.ctu.edu.vn",
+  "sdt": "0939793939",
+  "nh": "Khoa học Máy Tính",
+  "fb": "https://www.facebook.com/nhatduydragon",
+  "buyedAt": {
+    "$date": "2021-04-06T17:33:08.102Z"
+  },
+  "slug": "giao-trinh-mon-tri-tue-nhan-tao",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "606ddcd9a3c7612f40152324"
+  },
+  "idUserBuyItem": "6018e6fed203b92c8c87b197",
+  "name": "Giáo trình Môn Thị Giác Máy Tính",
+  "idUserCreated": "6018e39a47b37d0af460f909",
+  "nameUserCreated": "Ngô Minh Nhật Duy",
+  "idItem": "6018e4d647b37d0af460f90e",
+  "nameUserBuyItem": "Quách Huỳnh Hữu Tài",
+  "email": "taiB1807594@student.ctu.edu.vn",
+  "sdt": "0946385471",
+  "nh": "Hệ Thống Thông Tin",
+  "fb": "https://www.facebook.com/quachuynhuutai/",
+  "buyedAt": {
+    "$date": "2021-04-07T16:24:57.038Z"
+  },
+  "slug": "giao-trinh-mon-thi-giac-may-tinh-T96aAjJ5Dy",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "606f1c5136a3b92974cd991a"
+  },
+  "idUserBuyItem": "6018e39a47b37d0af460f909",
+  "name": "Giáo Trình Môn Trí Tuệ Nhân Tạo",
+  "idUserCreated": "6018e6fed203b92c8c87b197",
+  "nameUserCreated": "Quách Huỳnh Hữu Tài",
+  "idItem": "6018e72dd203b92c8c87b198",
+  "nameUserBuyItem": "Ngô Minh Nhật Duy",
+  "email": "duyB1807521@student.ctu.edu.vn",
+  "sdt": "0939793939",
+  "nh": "Khoa học Máy Tính",
+  "fb": "https://www.facebook.com/nhatduydragon",
+  "buyedAt": {
+    "$date": "2021-04-08T15:08:01.304Z"
+  },
+  "slug": "giao-trinh-mon-tri-tue-nhan-tao-nKg7mcXp2h",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60799a3a8c4b9f00dceefbe4"
+  },
+  "idUserBuyItem": "6018e39a47b37d0af460f909",
+  "name": "Giáo trình Môn Thị Giác Máy Tính",
+  "idUserCreated": "6018e6fed203b92c8c87b197",
+  "nameUserCreated": "Quách Huỳnh Hữu Tài",
+  "idItem": "6018e76cd203b92c8c87b19a",
+  "nameUserBuyItem": "Ngô Minh Nhật Duy",
+  "email": "duyB1807521@student.ctu.edu.vn",
+  "sdt": "0939793939",
+  "nh": "Khoa học Máy Tính",
+  "fb": "https://www.facebook.com/nhatduydragon",
+  "buyedAt": {
+    "$date": "2021-04-16T14:07:54.419Z"
+  },
+  "slug": "giao-trinh-mon-thi-giac-may-tinh",
+  "__v": 0
+}]
