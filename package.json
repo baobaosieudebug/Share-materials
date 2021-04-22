@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/baobaosieudebug/express-js.git"
+    "url": "git+https://github.com/baobaosieudebug/Share-materials.git"
   },
   "author": "david",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/baobaosieudebug/express-js.git/issues"
+    "url": "https://github.com/baobaosieudebug/Share-materials.git/issues"
   },
-  "homepage": "https://github.com/baobaosieudebug/express-js.gits#readme",
+  "homepage": "https://github.com/Share-materials.gits#readme",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

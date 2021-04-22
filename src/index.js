@@ -12,7 +12,7 @@ const bodyParser = require("body-parser");
 //Connect DB
 db.connect();
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -60,5 +60,5 @@ app.use(methodOverride("_method"));
 route(app);
 
 app.listen(port, () => {
-  console.log(`app listening at http://localhost:${port}`);
+  console.log(`app listening at http://localhost:${PORT}`);
 });
