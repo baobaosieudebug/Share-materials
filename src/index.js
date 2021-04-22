@@ -25,7 +25,7 @@ app.use(
     resave: true,
     saveUninitialized: true,
     secret: "somesecret",
-    cookie: { maxAge: 60000 },
+    
   })
 );
 
@@ -59,6 +59,6 @@ app.use(methodOverride("_method"));
 //Route
 route(app);
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`app listening at http://localhost:${PORT}`);
 });
