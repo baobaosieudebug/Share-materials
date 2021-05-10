@@ -443,6 +443,7 @@ td {
             <th scope="col" style="text-align:center;">Tên Sản Phẩm</th>
             <th scope="col" style="text-align:center;">Giá Sản Phẩm</th>
             <th scope="col" style="text-align:center;">Mô Tả Chi Tiết</th>
+            <th scope="col" style="text-align:center;colspan:2">Hình ảnh</th>
             <th scope="col"  style="padding-left:25px;colspan: 2;text-align:center;">Chỉnh Sửa Chi Tiết</th>
       </tr>
   
@@ -450,13 +451,14 @@ td {
            {{#each Product}}
           <tr>
             <th scope="row" style="text-align:center;border:1px solid black;" >{{sum @index 1}}</th>
-            <td   style="text-align:center;padding-top:23px;border:1px solid black;">{{this.name}}</td>
-            <td   style="text-align:center;padding-top:23px;border:1px solid black;">{{this.price}}</td>
-            <td   style="text-align:center;padding-top:23px;border:1px solid black;">{{this.description}}</td>
+            <td   style="text-align:center;padding-top:10px;border:1px solid black;">{{this.name}}</td>
+            <td   style="text-align:center;padding-top:10px;border:1px solid black;">{{this.price}}</td>
+            <td   style="text-align:left;padding-top:10px;border:1px solid black;">{{this.description}}</td>
+            <td   style="text-align:center;padding-top:23px;padding-bottom:15px;border:1px solid black;colspan:2"> <img src="/images/{{this.image}}" alt="Ảnh 1" width="100px" height="100px"></td>
             <td  style="border:1px solid black;text-align: center; ">
              
               <button type="button" class="btn btn-outline-info"> <a href="{{this._id}}/edit" class="btn btn-link">Sửa</a></button>
-              <button type="button" class="btn btn-outline-info"> <a href="#" class="btn btn-link" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-product-modal">Xóa</a></button>
+              <button type="button" class="btn btn-outline-info" id="ten"> <a href="#" class="btn btn-link" data-bs-toggle="modal" data-id="{{this._id}}" data-name="{{this.name}}" data-bs-target="#delete-product-modal">Xóa</a></button>
                   <button type="button" class="btn btn-outline-info"> <a href="{{this._id}}/upfile" class="btn btn-link">Cập nhật ảnh</a></button>
             </td>
           </tr>
@@ -474,11 +476,12 @@ td {
 
     <form name="delete" method="POST"></form>
  {{!-- confitm delete --}}
-    <div class="modal" tabindex="-1" id="delete-product-modal">
+   
+  <div class="modal" tabindex="-1" id="delete-product-modal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Xóa lịch sử?</h5>
+            <h5 class="modal-title">Xóa sản phẩm ?</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
           </div>
           <div class="modal-body">
@@ -491,19 +494,23 @@ td {
         </div>
       </div>
     </div>  
+  
   <script >
     var productId;
+    var productName;
     var deleteForm=document.forms['delete'];
     $('#delete-product-modal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
      productId = button.data('id') // Extract info from data-* attributes
-
+      productName= button.data('name');
+      alert("Bạn muốn xóa "+productName + " ?");
+      var btnDeleteNews = document.getElementById('btn-delete-new');
+        btnDeleteNews.onclick = function(){
+        deleteForm.action = '/home/' + productId +'?_method=DELETE';
+        deleteForm.submit();
+      } 
     })
-    var btnDeleteNews = document.getElementById('btn-delete-new');
-     btnDeleteNews.onclick = function(){
-      deleteForm.action = '/home/' + productId +'?_method=DELETE';
-     deleteForm.submit();
-    } 
+  
 
     </script>
 </body>

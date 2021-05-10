@@ -273,15 +273,23 @@ showProductById(req, res) {
       subject: 'Sending Email From Share-material Website in CTU',
       text: 'Chào '+req.body.receive+' Hiện tại tôi đang có nhu cầu trao đổi tài liệu với bạn hãy vui lòng kiểm tra thôn báo email của tôi là ' + req.body.username +'.Xin Cám Ơn!!'
     };
-
+    var checkAuth = true;
     transporter.sendMail(mailOptions, function(error, info){
       if (error) {
         if(error.code == 'EAUTH'){
-          res.render('contactform');
-        }
+          checkAuth = false;
+        }  
       } 
+      if(checkAuth === true){
+        res.redirect("/home");
+      }
+      else{
+        res.redirect("/login");
+      }
     })
-      res.redirect("/home");
+ 
+   
+   
     }
 
     formUpload(req,res,next){
